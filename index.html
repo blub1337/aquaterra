@@ -133,7 +133,7 @@
             --radius-sm:12px;
         }
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-        html{scroll-behavior:smooth}
+        html{scroll-behavior:smooth;background:var(--bg)}
         body{
             font-family:'Manrope',system-ui,-apple-system,sans-serif;
             background:var(--bg);color:var(--text);line-height:1.55;
@@ -180,7 +180,7 @@
 
         /* Hero */
         .hero-wrapper{position:relative;height:520vh;z-index:1}
-        .hero-sticky{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:0 5%}
+        .hero-sticky{position:sticky;top:0;height:100dvh;min-height:100dvh;width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:0 5%;background:var(--bg)}
         #heroCanvas{position:absolute;top:0;left:0;width:100%;height:100%;filter:saturate(1.05);background:var(--bg);will-change:transform}
         .hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 0%,rgba(3,3,3,.55) 70%,var(--bg) 100%),linear-gradient(180deg,rgba(3,3,3,.2) 0%,rgba(3,3,3,.45) 60%,var(--bg) 100%);pointer-events:none}
         .hero-noise{position:absolute;inset:0;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -728,12 +728,18 @@
 
             function resizeCanvas(){
                 const dpr=Math.min(window.devicePixelRatio||1,2);
-                canvas.width=window.innerWidth*dpr;
-                canvas.height=window.innerHeight*dpr;
-                canvas.style.width=window.innerWidth+'px';
-                canvas.style.height=window.innerHeight+'px';
+                const vw=window.innerWidth;
+                const vh=window.visualViewport ? window.visualViewport.height : window.innerHeight;
+                canvas.width=vw*dpr;
+                canvas.height=vh*dpr;
+                canvas.style.width=vw+'px';
+                canvas.style.height=vh+'px';
                 ctx.setTransform(dpr,0,0,dpr,0,0);
                 renderFrame(currentFrame);
+            }
+
+            if(window.visualViewport){
+                window.visualViewport.addEventListener('resize',()=>{resizeCanvas();updateHero();});
             }
 
             function renderFrame(index){
