@@ -776,12 +776,12 @@
                 if(frameIndex!==currentFrame){currentFrame=frameIndex;renderFrame(currentFrame);}
                 heroProgress.style.width=(progress*100)+'%';
 
-                // Hero content stays visible until animation nears completion
-                if(progress<0.92){
+                // Hero content fades out earlier so the frame animation becomes the focus
+                if(progress<0.72){
                     heroContent.style.opacity=1;
                     heroContent.style.transform='translateY(0)';
-                }else if(progress<0.98){
-                    const fade=(progress-0.92)/0.06;
+                }else if(progress<0.85){
+                    const fade=(progress-0.72)/0.13;
                     heroContent.style.opacity=1-fade;
                     heroContent.style.transform=`translateY(${fade*-25}px)`;
                 }else{
