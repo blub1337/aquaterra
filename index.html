@@ -289,8 +289,8 @@
         .hours-grid div:last-child,.hours-grid div:nth-last-child(2){border-bottom:none}
         .hours-grid span:first-child{color:var(--text-muted)}
         .hours-grid span:last-child{color:var(--text);font-weight:400}
-        .map-container{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;box-shadow:0 30px 60px rgba(0,0,0,.25)}
-        .map-container iframe{width:100%;height:100%;border:none;filter:grayscale(100%) invert(92%) contrast(83%)}
+        .map-container{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;aspect-ratio:16/9;box-shadow:0 30px 60px rgba(0,0,0,.25);background:var(--surface-2);min-height:320px}
+        .map-container iframe{width:100%;height:100%;border:none;filter:grayscale(20%) contrast(95%)}
         .phone-link{color:var(--gold);font-size:1.1rem;font-weight:500;transition:all .3s ease;display:inline-block}
         .phone-link:hover{color:#fff;transform:scale(1.02)}
 
@@ -359,7 +359,7 @@
             .location-info{text-align:center}
             .info-row{justify-content:flex-start;text-align:left}
             .hours-grid{grid-template-columns:1fr}
-            .map-container{aspect-ratio:1/1}
+            .map-container{aspect-ratio:4/3;min-height:280px}
             .cta-band h2{font-size:clamp(1.8rem,6vw,2.6rem)}
             .rating-hero{padding:1.5rem;gap:1rem}
             .rating-score{font-size:clamp(3rem,10vw,4.5rem)}
@@ -652,7 +652,7 @@
                 </div>
 
                 <div class="map-container reveal delay-1">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3144.4700000000003!2d21.4758625!3d38.6073126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135e5fff075d4fed%3A0xafda4314edd80a9d!2sAqua%20Terra%20%22%20restaurant%2Fcocktail%20bar%2Fcafe%22!5e0!3m2!1sde!2sgr!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Aqua Terra location map"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3144.4700000000003!2d21.4758625!3d38.6073126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135e5fff075d4fed%3A0xafda4314edd80a9d!2sAqua%20Terra%20%22%20restaurant%2Fcocktail%20bar%2Fcafe%22!5e0!3m2!1sen!2sgr!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Aqua Terra location map"></iframe>
                 </div>
             </div>
         </section>
@@ -849,150 +849,142 @@
         // ===== LANGUAGE SWITCHING =====
         const translations={
             el:{
+                'loader.text':'Φορτώνουμε την Εμπειρία',
                 nav:{about:'Η Ιστορία μας',experience:'Εμπειρία',gallery:'Στιγμές',reviews:'Κριτικές',location:'Τοποθεσία',contact:'Επικοινωνία'},
                 hero:{
                     label:'Βραβευμένο Εστιατόριο & Cocktail Bar',
                     title:'Aqua Terra',
-                    subtitle:'Αυθεντική κουζίνα, χειροποίητα cocktail και η μαγεία της λίμνης Τριχωνίδας σε έναν μοναδικό χώρο δίπλα στο νερό.',
-                    cta:'Κλείστε Τώρα',
+                    subtitle:'Μεσογειακή κουζίνα με πανοραμική θέα στη λίμνη Τριχωνίδα. Μία βραβευμένη εμπειρία δίπλα στο νερό.',
+                    cta:'Κλείστε Τραπέζι',
                     scroll:'ΚΥΛΙΣΤΕ ΓΙΑ ΕΞΕΡΕΥΝΗΣΗ'
                 },
                 about:{
-                    label:'Η ΙΣΤΟΡΙΑ ΜΑΣ',
-                    title:'Γεύσεις που συναντούν την άνεση',
-                    subtitle:'Σε ένα πανέμορφο σκηνικό δίπλα στη λίμνη, το Aqua Terra συνδυάζει την αυθεντική ελληνική φιλοξενία με σύγχρονη κουζίνα και cocktail υψηλής ποιότητας.',
-                    text1:'Από το πρώτο πρωινό καφέ έως το τελευταίο cocktail της βραδιάς, κάθε στιγμή εδώ είναι σχεδιασμένη για να σας χαρίσει χαλάρωση, γεύση και θέα που μένει αξέχαστη.',
-                    text2:'Η ομάδα μας επιλέγει καθημερινά φρέσκα υλικά από ντόπιους παραγωγούς, φτιάχνει κάθε πιάτο με φροντίδα και σερβίρει κάθε ποτό με ακρίβεια και στυλ.',
-                    stat1:'Χρόνια Εμπειρίας',
-                    stat2:'Βραβευμένα Cocktails',
-                    stat3:'Ικανοποιημένοι Επισκέπτες',
-                    stat4:'Μέτρα από τη Λίμνη'
+                    label:'Η Ιστορία μας',
+                    title:'Ένας Χώρος με Ψυχή',
+                    subtitle:'Στην όχθη της λίμνης Τριχωνίδας, το Aqua Terra ενώνει την αυθεντική ελληνική φιλοξενία με σύγχρονη γαστρονομία και cocktails υψηλής ποιότητας.',
+                    rating:'Εξαιρετική Βαθμολογία',
+                    ratingText:'Πάνω από 1.000 κριτικές επαινούν την κουζίνα, το σέρβις και τις αξέχαστες στιγμές που προσφέρουμε.',
+                    award:'Βραβευμένο',
+                    awardText:'Βραβευμένο για την εξαιρετική κουζίνα, την άρτια εξυπηρέτηση και τη μοναδική ατμόσφαιρα δίπλα στη λίμνη.'
                 },
-                experience:{
-                    label:'Η ΕΜΠΕΙΡΙΑ ΜΑΣ',
-                    title:'Κάθε επίσκεψη, μία ξεχωριστή στιγμή',
-                    card1:{title:'Κουζίνα δίπλα στη λίμνη',desc:'Απολαύστε πιάτα εμπνευσμένα από τη Μεσόγειο, με φρέσκα ψάρια, τοπικά κρέατα και λαχανικά εποχής.'},
-                    card2:{title:'Signature Cocktails',desc:'Χειροποίητα cocktails με premium spirits, βοτικά από την περιοχή και εντυπωσιακές παρουσιάσεις.'},
-                    card3:{title:'Εκδηλώσεις & Γιορτές',desc:'Οργανώστε ιδιωτικά δείπνα, γιορτές ή εταιρικές εκδηλώσεις με εξατομικευμένο μενού και υποστήριξη.'},
-                    card4:{title:'Ρομαντικά Δείπνα',desc:'Κεράστε κάποιον ξεχωριστό με θέα το ηλιοβασίλεμα, κεριά και προσεγμένη κάθε λεπτομέρεια.'}
+                exp:{
+                    label:'Η Εμπειρία',
+                    title:'Σχεδιασμένο για Ξεχωριστές Στιγμές',
+                    subtitle:'Κάθε λεπτομέρεια είναι σχεδιασμένη για να μετατρέψει την επίσκεψή σας σε μία αξέχαστη εμπειρία.',
+                    f1:{title:'Ταράτσα με Θέα στη Λίμνη',text:'Καθίστε στον ανοιχτό χώρο με απρόσκοπτη πανοραμική θέα στη λίμνη Τριχωνίδα και το ηλιοβασίλεμα.'},
+                    f2:{title:'Ιδιωτική Τραπεζαρία',text:'Ένας ζεστός ιδιωτικός χώρος για ειδικές περιστάσεις, γιορτές και επαγγελματικά δείπνα.'},
+                    f3:{title:'Handcrafted Cocktails',text:'Signature cocktails από έμπειρους bartenders, με premium spirits και φρέσκα υλικά από την περιοχή.'},
+                    f4:{title:'Δωρεάν Parking',text:'Ευρύχωρος δωρεάν χώρος στάθμευσης για όλους τους επισκέπτες, μόλις λίγα βήματα από την είσοδο.'}
                 },
                 gallery:{
-                    label:'ΣΤΙΓΜΕΣ',
-                    title:'Η ατμόσφαιρα του Aqua Terra',
-                    subtitle:'Μία ματιά στη γεύση, τα cocktails, τους χώρους και τις στιγμές που κάνουν κάθε επίσκεψη ξεχωριστή.'
+                    label:'Στιγμές',
+                    title:'Η Ατμόσφαιρά μας',
+                    subtitle:'Εικόνες από μία βραδιά στη λίμνη Τριχωνίδα.'
                 },
                 reviews:{
-                    label:'ΚΡΙΤΙΚΕΣ',
-                    title:'Τι λένε οι επισκέπτες μας',
-                    rating:'4.6',
+                    label:'Κριτικές Επισκεπτών',
+                    title:'Τι Λένε οι Επισκέπτες μας',
                     count:'1.047 κριτικές',
-                    source:'Βασισμένο σε κριτικές Google',
-                    review1:{text:'Ένας πραγματικός θησαυρός δίπλα στη λίμνη. Η θέα είναι μαγευτική, το φαγητό εξαιρετικό και το προσωπικό πολύ φιλικό. Ιδανικό για ηλιοβασίλεμα.',name:'Gudrun W.',source:'Google Review'},
-                    review2:{text:'Το Aqua Terra προσφέρει μία από τις καλύτερες εμπειρίες φαγητού στην περιοχή. Τα cocktails είναι δημιουργικά, ο χώρος κομψός και η ατμόσφαιρα ξεχωριστή.',name:'Helmut K.',source:'Google Review'},
-                    review3:{text:'Υπέροχο περιβάλλον, προσεγμένο σέρβις και πιάτα γεμάτα γεύση. Είναι ξεκάθαρα ένα must-visit στόχος για όποιον επισκέπτεται τη λίμνη Τριχωνίδα.',name:'Andrea B.',source:'Google Review'},
-                    review4:{text:'Περάσαμε υπέροχα. Η τοποθεσία, το φαγητό και η εξυπηρέτηση ήταν όλα σε υψηλό επίπεδο. Θα επιστρέψουμε σίγουρα.',name:'Hans B.',source:'Google Review'}
+                    source:'Βασισμένο σε κριτικές Google'
                 },
-                location:{
-                    label:'ΤΟΠΟΘΕΣΙΑ',
-                    title:'Δίπλα στη λίμνη Τριχωνίδα',
-                    subtitle:'Βρισκόμαστε στην καρδιά της Αιτωλοακαρνανίας, με εύκολη πρόσβαση από Αγρίνιο και Ναύπακτο.',
-                    address:'Μυρτιά, Αιτωλοακαρνανία',
-                    phone:'+30 26410 12345',
-                    hoursTitle:'Ωράριο Λειτουργίας',
-                    hours:{week:'Δευτέρα — Παρασκευή: 09:00 — 01:00',weekend:'Σαββατοκύριακο: 09:00 — 02:00'},
-                    cta:'Λάβετε Οδηγίες'
+                'rev':{
+                    '1':{text:'Ένας πραγματικός θησαυρός δίπλα στη λίμνη. Η θέα είναι μαγευτική, το φαγητό εξαιρετικό και το προσωπικό πολύ φιλικό. Ιδανικό για ηλιοβασίλεμα.',source:'Google Review'},
+                    '2':{text:'Υπέροχος χώρος με καταπληκτική πανοραμική θέα. Το φαγητό είναι εξαιρετικό και φτιάχνουν ωραία cocktails.',source:'Google Review'},
+                    '3':{text:'Ονειρική θέα στην κοιλάδα και τη λίμνη. Κομψή διακόσμηση, εντυπωσιακές γεύσεις και άψογη εξυπηρέτηση.',source:'Google Review'},
+                    '4':{text:'Για την ατμόσφαιρα θα έδινα άφοβα 10 αστέρια. Όμορφος χώρος, φρέσκο και νόστιμο φαγητό, άριστο σέρβις.',source:'Google Review'}
+                },
+                loc:{
+                    label:'Επισκεφθείτε μας',
+                    title:'Βρείτε μας',
+                    subtitle:'Ελάτε για μία αξέχαστη βραδιά δίπλα στη λίμνη.',
+                    restaurant:'Aqua Terra Restaurant',
+                    addressLabel:'Διεύθυνση',
+                    phoneLabel:'Τηλέφωνο',
+                    monThu:'Δευ — Παρ',
+                    fri:'Σαβ',
+                    sat:'Κυρ',
+                    sun:'Κυρ'
                 },
                 cta:{
                     title:'Έτοιμοι για μία ξεχωριστή εμπειρία;',
-                    subtitle:'Κλείστε τραπέζι σήμερα και απολαύστε βραβευμένη κουζίνα, cocktails και θέα στη λίμνη.',
-                    phone:'Καλέστε Μας',
-                    book:'Online Κράτηση',
-                    menu:'Δείτε το Μενού'
+                    text:'Κλείστε το τραπέζι σας σήμερα και ζήστε τη βραβευμένη εμπειρία του Aqua Terra.',
+                    button:'Καλέστε για Κράτηση'
                 },
                 footer:{
-                    tagline:'Βραβευμένο εστιατόριο & cocktail bar δίπλα στη λίμνη Τριχωνίδα.',
-                    links:{about:'Η Ιστορία μας',experience:'Εμπειρία',gallery:'Στιγμές',reviews:'Κριτικές',location:'Τοποθεσία',contact:'Επικοινωνία'},
-                    contact:'Επικοινωνία',
-                    address:'Μυρτιά, Αιτωλοακαρνανία',
-                    phone:'+30 26410 12345',
-                    hours:'Καθημερινά 09:00 — 01:00',
-                    social:'Ακολουθήστε μας',
+                    tagline:'Βραβευμένο εστιατόριο και cocktail bar δίπλα στη λίμνη Τριχωνίδα. Μεσογειακή κουζίνα, πανοραμική θέα και αξέχαστες στιγμές.',
+                    'links':{title:'Περιηγηθείτε'},
+                    'contact':{title:'Επικοινωνία',address:'Μυρτιά, Αιτωλοακαρνανία',phone:'+30 26410 12345',hours:'Καθημερινά 09:00 — 01:00'},
                     copyright:"made by <a href='https://vydas.net' target='_blank' rel='noopener' class='footer-link'>vydas.net</a>"
-                },
-                scrollExplore:'ΚΥΛΙΣΤΕ ΓΙΑ ΕΞΕΡΕΥΝΗΣΗ'
+                }
             },
             en:{
+                'loader.text':'Loading the Experience',
                 nav:{about:'Our Story',experience:'Experience',gallery:'Gallery',reviews:'Reviews',location:'Location',contact:'Contact'},
                 hero:{
                     label:'Award-Winning Restaurant & Cocktail Bar',
                     title:'Aqua Terra',
-                    subtitle:'Authentic cuisine, handcrafted cocktails and the magic of Lake Trichonida — all in a unique waterfront setting.',
-                    cta:'Reserve Now',
+                    subtitle:'Mediterranean dining with panoramic views of Lake Trichonida. An award-winning experience by the water.',
+                    cta:'Book Your Table',
                     scroll:'SCROLL TO EXPLORE'
                 },
                 about:{
-                    label:'OUR STORY',
-                    title:'Where flavour meets comfort',
-                    subtitle:'In a beautiful lakeside setting, Aqua Terra combines genuine Greek hospitality with modern cuisine and premium cocktails.',
-                    text1:'From the first morning coffee to the last cocktail of the night, every moment here is designed to offer relaxation, taste and unforgettable views.',
-                    text2:'Our team selects fresh local ingredients daily, prepares every dish with care and serves every drink with precision and style.',
-                    stat1:'Years of Experience',
-                    stat2:'Award-Winning Cocktails',
-                    stat3:'Satisfied Guests',
-                    stat4:'Metres from the Lake'
+                    label:'Our Story',
+                    title:'A Place with Soul',
+                    subtitle:'On the shore of Lake Trichonida, Aqua Terra brings together authentic Greek hospitality with modern gastronomy and premium cocktails.',
+                    rating:'Exceptional Rating',
+                    ratingText:'Over 1,000 reviews praise our cuisine, service and the unforgettable moments we create.',
+                    award:'Award Winning',
+                    awardText:'Recognised for outstanding cuisine, impeccable service and a unique lakeside atmosphere.'
                 },
-                experience:{
-                    label:'THE EXPERIENCE',
-                    title:'Every visit is a special moment',
-                    card1:{title:'Lakeside Dining',desc:'Enjoy Mediterranean-inspired dishes with fresh fish, local meats and seasonal vegetables.'},
-                    card2:{title:'Signature Cocktails',desc:'Handcrafted cocktails with premium spirits, regional botanicals and stunning presentation.'},
-                    card3:{title:'Events & Celebrations',desc:'Host private dinners, parties or corporate events with a tailored menu and dedicated support.'},
-                    card4:{title:'Romantic Dinners',desc:'Treat someone special with sunset views, candlelight and every detail thoughtfully arranged.'}
+                exp:{
+                    label:'The Experience',
+                    title:'Designed for Special Moments',
+                    subtitle:'Every detail is crafted to turn your visit into a lasting memory.',
+                    f1:{title:'Lakefront Terrace',text:'Open-air seating with unobstructed panoramic views of Lake Trichonida and the sunset.'},
+                    f2:{title:'Private Dining',text:'An intimate private space for special occasions, celebrations and business dinners.'},
+                    f3:{title:'Handcrafted Cocktails',text:'Signature cocktails by skilled bartenders using premium spirits and fresh local ingredients.'},
+                    f4:{title:'Free Parking',text:'Ample complimentary parking for all guests, just a few steps from the entrance.'}
                 },
                 gallery:{
-                    label:'GALLERY',
-                    title:'The Aqua Terra Atmosphere',
-                    subtitle:'A glimpse of the food, cocktails, spaces and moments that make every visit memorable.'
+                    label:'Moments',
+                    title:'Our Atmosphere',
+                    subtitle:'Impressions from an evening at Lake Trichonida.'
                 },
                 reviews:{
-                    label:'REVIEWS',
-                    title:'What our guests say',
-                    rating:'4.6',
-                    count:'1,047 reviews',
-                    source:'Based on Google Reviews',
-                    review1:{text:'A true gem by the lake. The view is magical, the food excellent and the staff very friendly. Perfect for sunset.',name:'Gudrun W.',source:'Google Review'},
-                    review2:{text:'Aqua Terra offers one of the best dining experiences in the area. The cocktails are creative, the venue elegant and the atmosphere unique.',name:'Helmut K.',source:'Google Review'},
-                    review3:{text:'Wonderful ambience, attentive service and dishes full of flavour. A clear must-visit for anyone coming to Lake Trichonida.',name:'Andrea B.',source:'Google Review'},
-                    review4:{text:'We had a great time. The location, food and service were all top-notch. We will definitely come back.',name:'Hans B.',source:'Google Review'}
+                    label:'Guest Reviews',
+                    title:'What Our Guests Say',
+                    count:'1.047 reviews',
+                    source:'Based on Google Reviews'
                 },
-                location:{
-                    label:'LOCATION',
-                    title:'By Lake Trichonida',
-                    subtitle:'Located in the heart of Aetolia-Acarnania, with easy access from Agrinio and Nafpaktos.',
-                    address:'Myrtia, Aetolia-Acarnania',
-                    phone:'+30 26410 12345',
-                    hoursTitle:'Opening Hours',
-                    hours:{week:'Monday — Friday: 09:00 — 01:00',weekend:'Saturday — Sunday: 09:00 — 02:00'},
-                    cta:'Get Directions'
+                'rev':{
+                    '1':{text:'A true gem by the lake. The view is magical, the food excellent and the staff very friendly. Perfect for sunset.',source:'Google Review'},
+                    '2':{text:'Beautiful place with breathtaking panoramic views. The food is great and they make excellent cocktails.',source:'Google Review'},
+                    '3':{text:'Dreamlike view of the valley and the lake. Tasteful decor, impressive flavours and impeccable service.',source:'Google Review'},
+                    '4':{text:'For ambience I would happily give 10 stars. Beautiful space, fresh and delicious food, outstanding service.',source:'Google Review'}
+                },
+                loc:{
+                    label:'Visit Us',
+                    title:'Find Us',
+                    subtitle:'Join us for an unforgettable evening by the lake.',
+                    restaurant:'Aqua Terra Restaurant',
+                    addressLabel:'Address',
+                    phoneLabel:'Phone',
+                    monThu:'Mon — Thu',
+                    fri:'Fri',
+                    sat:'Sat',
+                    sun:'Sun'
                 },
                 cta:{
                     title:'Ready for a special experience?',
-                    subtitle:'Book your table today and enjoy award-winning cuisine, cocktails and lake views.',
-                    phone:'Call Us',
-                    book:'Book Online',
-                    menu:'View Menu'
+                    text:'Reserve your table today and enjoy the award-winning Aqua Terra experience.',
+                    button:'Call to Reserve'
                 },
                 footer:{
-                    tagline:'Award-winning restaurant & cocktail bar by Lake Trichonida.',
-                    links:{about:'Our Story',experience:'Experience',gallery:'Gallery',reviews:'Reviews',location:'Location',contact:'Contact'},
-                    contact:'Contact',
-                    address:'Myrtia, Aetolia-Acarnania',
-                    phone:'+30 26410 12345',
-                    hours:'Daily 09:00 — 01:00',
-                    social:'Follow Us',
+                    tagline:'Award-winning restaurant and cocktail bar by Lake Trichonida. Mediterranean cuisine, panoramic views and unforgettable moments.',
+                    'links':{title:'Explore'},
+                    'contact':{title:'Contact',address:'Myrtia, Aetolia-Acarnania',phone:'+30 26410 12345',hours:'Daily 09:00 — 01:00'},
                     copyright:"made by <a href='https://vydas.net' target='_blank' rel='noopener' class='footer-link'>vydas.net</a>"
-                },
-                scrollExplore:'SCROLL TO EXPLORE'
+                }
             }
         };
 function setLanguage(lang){
