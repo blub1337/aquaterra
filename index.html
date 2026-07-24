@@ -753,9 +753,11 @@
             function renderFrame(index){
                 const img=frames[index];
                 if(!img||!img.complete)return;
+                const isMobile=window.innerWidth<768;
                 const dpr=window.devicePixelRatio||1;
                 const cw=canvas.width/dpr, ch=canvas.height/dpr;
-                const ratio=Math.max(cw/img.width,ch/img.height);
+                const cover=Math.max(cw/img.width,ch/img.height);
+                const ratio=isMobile?cover*1.25:cover;
                 const w=img.width*ratio, h=img.height*ratio;
                 const x=(cw-w)/2, y=(ch-h)/2;
                 ctx.clearRect(0,0,cw,ch);
@@ -795,7 +797,7 @@
                 }else{
                     heroContent.style.opacity=0;
                 }
-                scrollHint.style.opacity=progress>0.18?0:0.8;
+                scrollHint.style.opacity=progress>0.50?0:0.8;
             }
 
             let ticking=false;
