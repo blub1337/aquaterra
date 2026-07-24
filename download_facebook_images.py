@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Download Facebook images for Aqua Terra landing page
+"""
+import os
+import re
+import urllib.request
+from pathlib import Path
+
+# Facebook image URLs (hochqualitativste Versionen extrahiert)
+IMAGE_URLS = [
+    ("facebook-exterior-1.jpg", "https://scontent.fath4-2.fna.fbcdn.net/v/t39.30808-6/481132953_9178326282274474_2162162297134354878_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1518&ctp=s960x960&_nc_cat=109&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=6b8Rufw4nnkQ7kNvwGRij1n&_nc_oc=AdrbKLcRU4PrEiv3CDWmWdQFiJKDLXXR8MFxbbMFh8Paf8-P5kqhReaGU2a9d7ztBd3Xoex7IJh9q_Kg7HQJa-ga&_nc_zt=23&_nc_ht=scontent.fath4-2.fna&_nc_gid=_yqpD6YGW28-BwyB6R7upg&_nc_ss=7b289&oh=00_AQBDfAFDI7T8noBYrooC3TC4h4dqCZhumB2a8OUoGg_Z-Q&oe=6A691B90"),
+    ("facebook-food-1.jpg", "https://scontent.fath4-2.fna.fbcdn.net/v/t51.82787-15/723144614_18539435008079041_1799825614900937737_n.jpg?stp=dst-jpg_tt6&cstp=mx1035x1294&ctp=p206x206&_nc_cat=101&ccb=1-7&_nc_sid=98fdb7&_nc_ohc=hmozHwhwFyIQ7kNvwGq4_Os&_nc_oc=AdqVvix6ayxDcqjrhFO_Ng7P8J2FLdxCJp2XZYFuvc8deCnywZyP5_OXY1NAgDz1KOW3t2k-vcd3vnovCARigP7u&_nc_zt=23&_nc_ht=scontent.fath4-2.fna&_nc_gid=_yqpD6YGW28-BwyB6R7upg&_nc_ss=7b289&oh=00_AQANIPNtiqp7VQx5gHMUnrHuL4whjIqo2n7Ncw95-LcZ_Q&oe=6A693B09"),
+    ("facebook-interior-1.jpg", "https://scontent.fath4-2.fna.fbcdn.net/v/t39.30808-6/482343729_1045863434254072_4090442294108931103_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s206x206&_nc_cat=111&ccb=1-7&_nc_sid=6a8453&_nc_ohc=PJNcNcMfqGMQ7kNvwGr-S7W&_nc_oc=AdrbFXYBw7YS14hBKi_jgFntTCqJEs3b1kiFmSILM2wEDctTraKs2feLjruM1DGeTgSq0Vz269Uc8oscQUA9ySaI&_nc_zt=23&_nc_ht=scontent.fath4-2.fna&_nc_gid=_yqpD6YGW28-BwyB6R7upg&_nc_ss=7b289&oh=00_AQD1_g7SCvlEFmQRjAc16UZMRd4aIVw8CMgOlOwvugS5YA&oe=6A690B77"),
+    ("facebook-cocktail-1.jpg", "https://scontent.fath4-2.fna.fbcdn.net/v/t39.30808-6/226077056_4091935637580256_4359975516642262922_n.jpg?stp=dst-jpg_tt6&cstp=mx959x960&ctp=s206x206&_nc_cat=102&ccb=1-7&_nc_sid=3fb48e&_nc_ohc=WseE6Ks-3QEQ7kNvwG_WKMl&_nc_oc=AdonhT7y8Zg-9ISWN5dDtRnrbNxUeVwCp4gbggSjAxoGFfWM1I1bYd77QNWGwY3Z4VI16G77R30KUxoOoYfSi-D8&_nc_zt=23&_nc_ht=scontent.fath4-2.fna&_nc_gid=_yqpD6YGW28-BwyB6R7upg&_nc_ss=7b289&oh=00_AQDczhbd7FinJlK-vEeljoLCPAYXsv4T4hHmEnVLPvBtXA&oe=6A69299E"),
+    ("facebook-terrace-1.jpg", "https://scontent.fath4-2.fna.fbcdn.net/v/t39.30808-6/488916945_9424286987678401_4296686046566815832_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1080&ctp=p206x206&_nc_cat=101&ccb=1-7&_nc_sid=bc9378&_nc_ohc=dCFX9Zp4HOsQ7kNvwE3Q8my&_nc_oc=Adq6HfzfOIUpS9xZe0UvnUsaC-WqGXtut6IVHYRfvhKpsnHFhvm-mhjMVM4I4AfiSilq-scGy5csqgxmpbL7mHHf&_nc_zt=23&_nc_ht=scontent.fath4-2.fna&_nc_gid=_yqpD6YGW28-BwyB6R7upg&_nc_ss=7b289&oh=00_AQBFNTcUwLrHUCOpA758esHDzZ6S_vXBVlPnGW1CJ8Klsw&oe=6A692657"),
+    ("facebook-atmosphere-1.jpg", "https://scontent.fath4-2.fna.fbcdn.net/v/t39.30808-6/502569470_9962756383831456_2504524852321976563_n.jpg?stp=dst-jpg_tt6&cstp=mx960x720&ctp=p206x206&_nc_cat=102&ccb=1-7&_nc_sid=0aeaa6&_nc_ohc=ko_yuxg4HZYQ7kNvwEwbYC-&_nc_oc=AdqhrzcQZRJoCch92EDgQ16oJljl1DewWLsUHPxbZFeE-_5OpYDD9E4tkod2zwnfXnPxtsKZyQR5RMovOhDP63CS&_nc_zt=23&_nc_ht=scontent.fath4-2.fna&_nc_gid=_yqpD6YGW28-BwyB6R7upg&_nc_ss=7b289&oh=00_AQBAbma3eecVNG_qOYs95erJP3uVQ3crIxkj2dcjIZ9Nwg&oe=6A6936BF"),
+    ("facebook-food-2.jpg", "https://scontent.fath4-2.fna.fbcdn.net/v/t39.30808-6/509377657_9955884124518682_5703531893056855893_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1366&ctp=p206x206&_nc_cat=109&ccb=1-7&_nc_sid=0aeaa6&_nc_ohc=flBpgVCODmUQ7kNvwESyQzI&_nc_oc=AdpPUc0tJLefSav39KnvWy4C7Aa75HzngVjodyuB25E42OYQLoYS-uxZSC6Pqv-NavV1Rxq_04uL7zClIF9cm4KB&_nc_zt=23&_nc_ht=scontent.fath4-2.fna&_nc_gid=_yqpD6YGW28-BwyB6R7upg&_nc_ss=7b289&oh=00_AQC6HjOz_f5jV-yJ4HqtCFUnAveXcKVyFaeSbHARsPQmjA&oe=6A691CE2"),
+    ("facebook-exterior-2.jpg", "https://scontent.fath4-2.fna.fbcdn.net/v/t39.30808-6/506986521_9911849908922104_1623314177700703878_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=p206x206&_nc_cat=111&ccb=1-7&_nc_sid=0aeaa6&_nc_ohc=sYiDj6mVV9EQ7kNvwHfvwPY&_nc_oc=Adr-vGLqx7MvEt57cFjxnc7d9prUyfq8t4Pfkcq-544OcpjKaWyHW7DFw5bPVIwqcSBUlu7-oTLznrVCvDfS7sDb&_nc_zt=23&_nc_ht=scontent.fath4-2.fna&_nc_gid=_yqpD6YGW28-BwyB6R7upg&_nc_ss=7b289&oh=00_AQA2ebQ_w5PPmpIFWhZn8HAcWqfrAQ7FaN-mRSIAe0CR-A&oe=6A692A47"),
+]
+
+def download_image(url, filename):
+    """Download a single image"""
+    try:
+        print(f"[+] Lade herunter: {filename}")
+        
+        # User-Agent setzen (wichtig für Facebook)
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36',
+            'Accept': 'image/webp,image/apng,image/*,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.9',
+        }
+        
+        req = urllib.request.Request(url, headers=headers)
+        
+        with urllib.request.urlopen(req, timeout=30) as response:
+            with open(filename, 'wb') as out_file:
+                out_file.write(response.read())
+        
+        # Dateigröße prüfen
+        size = os.path.getsize(filename)
+        print(f"    Erfolg: {size:,} bytes")
+        return True
+        
+    except Exception as e:
+        print(f"    Fehler: {e}")
+        return False
+
+def main():
+    images_dir = Path(__file__).parent / "images"
+    images_dir.mkdir(exist_ok=True)
+    
+    print(f"[*] Lade {len(IMAGE_URLS)} Facebook-Bilder herunter...")
+    print(f"[*] Zielordner: {images_dir}\n")
+    
+    success_count = 0
+    for filename, url in IMAGE_URLS:
+        filepath = images_dir / filename
+        if download_image(url, filepath):
+            success_count += 1
+    
+    print(f"\n[*] Fertig: {success_count}/{len(IMAGE_URLS)} Bilder erfolgreich heruntergeladen")
+
+if __name__ == "__main__":
+    main()

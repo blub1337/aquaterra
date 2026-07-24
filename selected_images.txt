@@ -1,0 +1,19 @@
+# Selected Images for Aqua Terra Landing Page
+# Generated automatically based on file size and quality
+
+hero = 506653046_9911850618922033_661776978636202946_n.jpg
+interior_1 = interior-1.jpg
+interior_2 = 506531577_9910989595674802_731187341473502969_n.jpg
+food_1 = food-1.jpg
+food_2 = 505828493_9910989472341481_3879326001581608062_n.jpg
+food_3 = 506338969_9911464522293976_9065926674286702476_n.jpg
+cocktail_1 = cocktail-1.jpg
+cocktail_2 = 506092515_9911464528960642_855826723425992128_n.jpg
+terrace_1 = terrace-1.jpg
+terrace_2 = 505947241_9910989592341469_7562819216884758934_n.jpg
+detail_1 = detail-2.jpg
+detail_2 = atmosphere-1.jpg
+social_1 = facebook-exterior-1.jpg
+social_2 = facebook-food-1.jpg
+social_3 = facebook-atmosphere-1.jpg
+social_4 = facebook-terrace-1.jpg

@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Rebuild Main Gallery section
+"""
+import re
+from pathlib import Path
+
+html_file = Path("C:/Users/L33/.openclaw/workspace/projects/aqua-terra/index.html")
+
+with open(html_file, 'r', encoding='utf-8') as f:
+    content = f.read()
+
+# Best images for main gallery
+main_gallery_images = [
+    "506653046_9911850618922033_661776978636202946_n.jpg",  # 326 KB - Hero/Exterior
+    "506895132_9911850755588686_7595859430319777534_n.jpg",  # 270 KB - Food
+    "508717514_9955884347851993_6584167913972386682_n.jpg",  # 198 KB - Detail
+    "509092799_9955884377851990_6540321685798541297_n.jpg",  # 188 KB - Cocktail
+    "509377657_9955884124518682_5703531893056855893_n.jpg",  # 187 KB - Food
+    "472917815_8895921763848262_1776686108530075593_n.jpg",  # 125 KB - Atmosphere
+]
+
+# Find the broken Gallery section and replace it
+old_gallery_pattern = r'(<section id="gallery" class="gallery">.*?<div class="gallery-grid">)(.*?)(</div>\s*</section>)'
+match = re.search(old_gallery_pattern, content, re.DOTALL)
+
+if match:
+    print(f"Found broken gallery section at position {match.start()}")
+    
+    # Create new gallery HTML
+    gallery_items = "\n".join([
+        f'                <div class="gallery-item reveal" style="background-image: url(\'images/{img}\');"></div>'
+        for img in main_gallery_images
+    ])
+    
+    new_gallery = f'''{match.group(1)}
+{gallery_items}
+            {match.group(3)}'''
+    
+    content = content[:match.start()] + new_gallery + content[match.end():]
+    
+    # Write fixed HTML
+    with open(html_file, 'w', encoding='utf-8') as f:
+        f.write(content)
+    
+    print(f"[OK] Main Gallery rebuilt with {len(main_gallery_images)} images")
+else:
+    print("[ERROR] Gallery section not found!")

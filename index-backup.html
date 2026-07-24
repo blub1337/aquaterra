@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqua Terra | Premium Dining at Lake Trichonida - Award Winning Restaurant Greece</title>
+    <meta name="description" content="Award-winning restaurant, cocktail bar & café at Lake Trichonida, Greece. Mediterranean cuisine with breathtaking sunset views. Reserve your table now.">
+    <meta name="keywords" content="Aqua Terra, restaurant Greece, Lake Trichonida, fine dining Agrinio, cocktail bar, Mediterranean cuisine, Greek restaurant, waterfront dining">
+    <meta name="author" content="Zoehl Group">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aquaterra.gr/">
+    <meta property="og:title" content="Aqua Terra | Premium Dining Experience">
+    <meta property="og:description" content="Award-winning restaurant at Lake Trichonida. Mediterranean cuisine meets breathtaking views.">
+    <meta property="og:image" content="https://aquaterra.gr/images/hero-exterior.jpg">
+    <meta property="og:locale" content="el_GR">
+    <meta property="og:locale:alternate" content="en_US">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://aquaterra.gr/">
+    <meta name="twitter:title" content="Aqua Terra | Premium Dining Experience">
+    <meta name="twitter:description" content="Award-winning restaurant at Lake Trichonida. Mediterranean cuisine meets breathtaking views.">
+    <meta name="twitter:image" content="https://aquaterra.gr/images/hero-exterior.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://aquaterra.gr/">
+    
+    <!-- Language Alternates -->
+    <link rel="alternate" hreflang="el" href="https://aquaterra.gr/el">
+    <link rel="alternate" hreflang="en" href="https://aquaterra.gr/en">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Aqua Terra",
+      "image": "https://aquaterra.gr/images/hero-exterior.jpg",
+      "url": "https://aquaterra.gr",
+      "telephone": "+302641000000",
+      "priceRange": "€€€",
+      "servesCuisine": "Mediterranean",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Παλαιών Πατρών Γερμανού 7",
+        "addressLocality": "Καινούργιο",
+        "postalCode": "300 05",
+        "addressCountry": "GR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.5089,
+        "longitude": 21.4399
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "08:00",
+          "closes": "01:00"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "1023"
+      },
+      "award": "Αετοί της Γαστρονομίας 2026"
+    }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Manrope:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --charcoal: #1a1a1a;
+            --slate: #2d2d2d;
+            --gold: #c9a962;
+            --gold-light: #e8c88b;
+            --cyan: #00d4ff;
+            --white: #ffffff;
+            --off-white: #f5f5f5;
+            --gradient-gold: linear-gradient(135deg, #c9a962 0%, #f0e68c 50%, #c9a962 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--black);
+            color: var(--off-white);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Loader */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            letter-spacing: 0.3em;
+            animation: loaderFade 2s ease forwards;
+        }
+
+        @keyframes loaderFade {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            mix-blend-mode: difference;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.2em;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: var(--white);
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active,
+        .lang-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            position: relative;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.4);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.7) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 12vw, 10rem);
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.7s forwards;
+        }
+
+        .hero-title span {
+            display: block;
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto 3rem;
+            color: rgba(255,255,255,0.7);
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.9s forwards;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.1s forwards;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
+            animation: scrollPulse 2s ease infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { transform: scaleY(1); opacity: 1; }
+            50% { transform: scaleY(0.5); opacity: 0.5; }
+        }
+
+        .scroll-text {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* About Section */
+        .about {
+            padding: 15vh 5%;
+            position: relative;
+        }
+
+        .section-header {
+            margin-bottom: 8rem;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.1;
+            color: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-image {
+            grid-column: 2 / 8;
+            aspect-ratio: 4/5;
+            background: var(--slate);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-content {
+            grid-column: 7 / 12;
+            padding-left: 4rem;
+            z-index: 2;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 3rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 15vh 5%;
+            background: var(--charcoal);
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+        }
+
+        .experience-card {
+            background: var(--black);
+            padding: 4rem 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .experience-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .card-description {
+            color: rgba(255,255,255,0.6);
+            line-height: 1.8;
+        }
+
+        /* Menu Preview */
+        .menu-preview {
+            padding: 15vh 5%;
+        }
+
+        .menu-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            padding: 2.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            padding-left: 2rem;
+            background: linear-gradient(90deg, rgba(201, 169, 98, 0.05) 0%, transparent 100%);
+        }
+
+        .menu-item-info h3 {
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-description {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.95rem;
+        }
+
+        .menu-item-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 15vh 5%;
+            background: var(--charcoal);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: var(--slate);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+        .gallery-item:nth-child(4) { grid-column: span 2; }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.8) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Location Section */
+        .location {
+            padding: 15vh 5%;
+        }
+
+        .location-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .location-info {
+            padding-top: 2rem;
+        }
+
+        .info-block {
+            margin-bottom: 3rem;
+        }
+
+        .info-block-title {
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .info-block-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .location-map iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(0.3) contrast(1.1);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 15vh 5%;
+            text-align: center;
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(201, 169, 98, 0.1) 0%, transparent 70%),
+                var(--black);
+        }
+
+        .cta-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            padding: 1.2rem 3rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient-gold);
+            color: var(--black);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(201, 169, 98, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* Footer */
+        footer {
+            padding: 5rem 5%;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.5);
+            margin-top: 1rem;
+            line-height: 1.8;
+        }
+
+        .footer-column h4 {
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--gold);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image, .about-content {
+                grid-column: 1 / -1;
+            }
+            
+            .about-content {
+                padding-left: 0;
+                margin-top: 3rem;
+            }
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .location-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 400px;
+                height: 100vh;
+                background: var(--charcoal);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .lang-switch {
+                display: none;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .menu-item-price {
+                text-align: left;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item:nth-child(1),
+            .gallery-item:nth-child(4) {
+                grid-column: span 1;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: clamp(2.5rem, 15vw, 6rem);
+            }
+
+            .section-title {
+                font-size: clamp(2rem, 8vw, 3.5rem);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+        }
+
+        /* Animations on Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-text">AQUA TERRA</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo">Aqua Terra</div>
+        <div class="nav-right">
+            <ul class="nav-menu">
+                <li><a href="#about" data-i18n="nav.about">About</a></li>
+                <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+                <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
+                <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+                <li><a href="#location" data-i18n="nav.location">Location</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+            </ul>
+            <div class="lang-switch">
+                <button class="lang-btn active" data-lang="el">EL</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg" style="background-image: url('images/hero-exterior.jpg');"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle" data-i18n="hero.subtitle">Lake Trichonida, Greece</p>
+            <h1 class="hero-title">
+                <span data-i18n="hero.title1">Aqua</span>
+                <span data-i18n="hero.title2">Terra</span>
+            </h1>
+            <p class="hero-description" data-i18n="hero.description">
+                An award-winning culinary journey where Mediterranean traditions meet contemporary excellence.
+            </p>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span class="scroll-text" data-i18n="hero.scroll">Explore</span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-header reveal">
+            <span class="section-label">Our Story</span>
+            <h2 class="section-title">Where Nature<br>Meets Culinary Art</h2>
+        </div>
+        
+        <div class="about-grid">
+            <div class="about-image reveal">
+                <img src="images/interior-1.jpg" alt="Aqua Terra interior dining area">
+            </div>
+            <div class="about-content reveal">
+                <p class="about-text">
+                    Nestled on the shores of Greece's largest lake, Aqua Terra offers an unparalleled 
+                    dining experience that celebrates the harmony between exceptional cuisine and 
+                    breathtaking natural beauty.
+                </p>
+                <p class="about-text">
+                    Our award-winning kitchen masterfully blends traditional Greek recipes with 
+                    modern techniques, creating dishes that tell stories of heritage, passion, 
+                    and uncompromising quality.
+                </p>
+                
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">2026</div>
+                        <div class="stat-label">Αετοί Award</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Happy Guests</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Years Excellence</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="section-header reveal">
+            <span class="section-label">What We Offer</span>
+            <h2 class="section-title">An Unforgettable<br>Experience</h2>
+        </div>
+        
+        <div class="experience-grid">
+            <div class="experience-card reveal">
+                <div class="card-icon">🍽️</div>
+                <h3 class="card-title">Fine Dining</h3>
+                <p class="card-description">
+                    Exquisite Mediterranean cuisine crafted with locally sourced ingredients 
+                    and presented with artistic precision.
+                </p>
+            </div>
+            
+            <div class="experience-card reveal">
+                <div class="card-icon">🍸</div>
+                <h3 class="card-title">Cocktail Bar</h3>
+                <p class="card-description">
+                    Signature cocktails and premium spirits, mixed to perfection by our 
+                    expert bartenders in an elegant setting.
+                </p>
+            </div>
+            
+            <div class="experience-card reveal">
+                <div class="card-icon">☕</div>
+                <h3 class="card-title">Café Lounge</h3>
+                <p class="card-description">
+                    Relaxing café atmosphere perfect for morning coffee, afternoon treats, 
+                    or evening conversations with friends.
+                </p>
+            </div>
+            
+            <div class="experience-card reveal">
+                <div class="card-icon">🌅</div>
+                <h3 class="card-title">Lake View Terrace</h3>
+                <p class="card-description">
+                    Panoramic terrace overlooking Lake Trichonida, offering stunning 
+                    sunset views and unforgettable moments.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Preview -->
+    <section class="menu-preview" id="menu">
+        <div class="section-header reveal">
+            <span class="section-label">Culinary Excellence</span>
+            <h2 class="section-title">Signature Dishes</h2>
+        </div>
+        
+        <div class="menu-list">
+            <div class="menu-item reveal">
+                <div class="menu-item-info">
+                    <h3>Grilled Sea Bass</h3>
+                    <p class="menu-item-description">Fresh catch of the day, lemon herb butter, seasonal vegetables</p>
+                </div>
+                <div class="menu-item-price">€28</div>
+            </div>
+            
+            <div class="menu-item reveal">
+                <div class="menu-item-info">
+                    <h3>Lobster Pasta</h3>
+                    <p class="menu-item-description">Handmade linguine, fresh lobster, cherry tomatoes, white wine sauce</p>
+                </div>
+                <div class="menu-item-price">€34</div>
+            </div>
+            
+            <div class="menu-item reveal">
+                <div class="menu-item-info">
+                    <h3>Lamb Kleftiko</h3>
+                    <p class="menu-item-description">Slow-cooked lamb, potatoes, herbs, baked in parchment</p>
+                </div>
+                <div class="menu-item-price">€26</div>
+            </div>
+            
+            <div class="menu-item reveal">
+                <div class="menu-item-info">
+                    <h3>Mediterranean Platter</h3>
+                    <p class="menu-item-description">Selection of mezedes, olives, feta, grilled vegetables, tzatziki</p>
+                </div>
+                <div class="menu-item-price">€22</div>
+            </div>
+            
+            <div class="menu-item reveal">
+                <div class="menu-item-info">
+                    <h3>Aqua Terra Signature Cocktail</h3>
+                    <p class="menu-item-description">Premium vodka, elderflower, fresh lime, edible gold</p>
+                </div>
+                <div class="menu-item-price">€16</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="section-header reveal">
+            <span class="section-label">Visual Journey</span>
+            <h2 class="section-title">Moments Captured</h2>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item reveal">
+                <img src="images/terrace-1.jpg" alt="Aqua Terra terrace view">
+            </div>
+            <div class="gallery-item reveal">
+                <img src="images/food-1.jpg" alt="Signature dish presentation">
+            </div>
+            <div class="gallery-item reveal">
+                <img src="images/cocktail-1.jpg" alt="Craft cocktails">
+            </div>
+            <div class="gallery-item reveal">
+                <img src="images/interior-2.jpg" alt="Interior ambiance">
+            </div>
+            <div class="gallery-item reveal">
+                <img src="images/atmosphere-1.jpg" alt="Evening atmosphere">
+            </div>
+            <div class="gallery-item reveal">
+                <img src="images/detail-1.jpg" alt="Architectural details">
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location" id="location">
+        <div class="section-header reveal">
+            <span class="section-label">Find Us</span>
+            <h2 class="section-title">Visit Aqua Terra</h2>
+        </div>
+        
+        <div class="location-wrapper">
+            <div class="location-info reveal">
+                <div class="info-block">
+                    <h4 class="info-block-title">Address</h4>
+                    <p class="info-block-content">
+                        Παλαιών Πατρών Γερμανού 7<br>
+                        Καινούργιο 300 05<br>
+                        Lake Trichonida, Greece
+                    </p>
+                </div>
+                
+                <div class="info-block">
+                    <h4 class="info-block-title">Opening Hours</h4>
+                    <p class="info-block-content">
+                        Monday – Sunday<br>
+                        08:00 – 01:00<br>
+                        Hot kitchen until 23:00
+                    </p>
+                </div>
+                
+                <div class="info-block">
+                    <h4 class="info-block-title">Getting Here</h4>
+                    <p class="info-block-content">
+                        Free parking available<br>
+                        5 minutes from Agrinio<br>
+                        Lakeside location
+                    </p>
+                </div>
+            </div>
+            
+            <div class="location-map reveal">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3068.547289123456!2d21.4377!3d38.5089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a8a5a5a5a5a5a5%3A0x1234567890abcdef!2sAqua%20Terra%20restaurant!5e0!3m2!1sen!2sgr!4v1234567890" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Aqua Terra Location Map"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <h2 class="cta-title reveal">Reserve Your Table</h2>
+        <p class="hero-description reveal">
+            Join us for an unforgettable dining experience at Lake Trichonida.
+        </p>
+        
+        <div class="cta-buttons reveal">
+            <a href="tel:+302641000000" class="btn btn-primary">Call +30 2641 000000</a>
+            <a href="mailto:info@aquaterra.gr" class="btn btn-secondary">Email Us</a>
+            <a href="#" class="btn btn-primary">Book Online</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="nav-logo">Aqua Terra</div>
+                <p>
+                    Restaurant • Cocktail Bar • Café<br>
+                    Lake Trichonida, Greece
+                </p>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Explore</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#location">Location</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="tel:+302641000000">+30 2641 000000</a></li>
+                    <li><a href="mailto:info@aquaterra.gr">info@aquaterra.gr</a></li>
+                    <li><a href="#">Reservations</a></li>
+                    <li><a href="#">Events</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Follow</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">TikTok</a></li>
+                    <li><a href="#">TripAdvisor</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2026 Aqua Terra. Part of Zoehl Group for Local Businesses.</p>
+            <div class="social-links">
+                <a href="#" class="social-link">Privacy</a>
+                <a href="#" class="social-link">Terms</a>
+                <a href="#" class="social-link">Imprint</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Translations
+        const translations = {
+            el: {
+                'nav.about': 'Σχετικά',
+                'nav.experience': 'Εμπειρία',
+                'nav.menu': 'Μενού',
+                'nav.gallery': 'Γκαλερί',
+                'nav.location': 'Τοποθεσία',
+                'nav.contact': 'Επικοινωνία',
+                'hero.subtitle': 'Λίμνη Τριχωνίδα, Ελλάδα',
+                'hero.title1': 'Aqua',
+                'hero.title2': 'Terra',
+                'hero.description': 'Μια βραβευμένη γαστρονομική εμπειρία όπου οι μεσογειακές παραδόσεις συναντούν τη σύγχρονη αριστεία.',
+                'hero.scroll': 'Εξερευνήστε',
+                'about.label': 'Η Ιστορία Μας',
+                'about.title': 'Εκεί που η Φύση<br>Συναντά τη Γαστρονομική Τέχνη',
+                'about.text1': 'Στην όχθη της μεγαλύτερης λίμνης της Ελλάδας, το Aqua Terra προσφέρει μια ασυναγώνιστη εμπειρία γευμάτων που γιορτάζει την αρμονία μεταξύ εξαιρετικής κουζίνας και εκπληκτικής φυσικής ομορφιάς.',
+                'about.text2': 'Η βραβευμένη κουζίνα μας συνδυάζει μαεστρικά παραδοσιακές ελληνικές συνταγές με σύγχρονες τεχνικές, δημιουργώντας πιάτα που αφηγούνται ιστορίες κληρονομιάς, πάθους και αδιαπραγμάτευτης ποιότητας.',
+                'stat.award': 'Βραβείο Αετοί',
+                'stat.guests': 'Ευχαριστημένοι Επισκέπτες',
+                'stat.years': 'Χρόνια Αριστείας',
+                'exp.label': 'Τι Προσφέρουμε',
+                'exp.title': 'Μια Αξέχαστη<br>Εμπειρία',
+                'exp.dining': 'Fine Dining',
+                'exp.diningDesc': 'Εξαιρετική μεσογειακή κουζίνα φτιαγμένη με τοπικά υλικά και παρουσιασμένη με καλλιτεχνική ακρίβεια.',
+                'exp.cocktail': 'Cocktail Bar',
+                'exp.cocktailDesc': 'Signature cocktails και premium ποτά, αναμεμειγμένα στην τελειότητα από τους ειδικούς bartenders μας.',
+                'exp.cafe': 'Café Lounge',
+                'exp.cafeDesc': 'Χαλαρωτική ατμόσφαιρα café ιδανική για πρωινό καφέ, απογευματινές λιχουδιές ή βραδινές συζητήσεις.',
+                'exp.terrace': 'Βεράντα με Θέα',
+                'exp.terraceDesc': 'Πανοραμική βεράντα με θέα στη Λίμνη Τριχωνίδα, προσφέροντας εκπληκτικά ηλιοβασιλέματα.',
+                'menu.label': 'Γαστρονομική Αριστεία',
+                'menu.title': 'Signature Πιάτα',
+                'cta.title': 'Κλείστε Το Τραπέζι Σας',
+                'cta.desc': 'Ελάτε μαζί μας για μια αξέχαστη γαστρονομική εμπειρία στη Λίμνη Τριχωνίδα.',
+                'cta.call': 'Καλέστε',
+                'cta.email': 'Email',
+                'cta.book': 'Κράτηση Online',
+                'loc.label': 'Βρείτε Μας',
+                'loc.title': 'Επισκεφθείτε το Aqua Terra',
+                'loc.address': 'Διεύθυνση',
+                'loc.hours': 'Ώρες Λειτουργίας',
+                'loc.getting': 'Πώς να Έρθετε',
+                'footer.explore': 'Εξερευνήστε',
+                'footer.contact': 'Επικοινωνία',
+                'footer.follow': 'Ακολουθήστε',
+                'footer.privacy': 'Απόρρητο',
+                'footer.terms': 'Όροι',
+                'footer.imprint': 'Impressum'
+            },
+            en: {
+                'nav.about': 'About',
+                'nav.experience': 'Experience',
+                'nav.menu': 'Menu',
+                'nav.gallery': 'Gallery',
+                'nav.location': 'Location',
+                'nav.contact': 'Contact',
+                'hero.subtitle': 'Lake Trichonida, Greece',
+                'hero.title1': 'Aqua',
+                'hero.title2': 'Terra',
+                'hero.description': 'An award-winning culinary journey where Mediterranean traditions meet contemporary excellence.',
+                'hero.scroll': 'Explore',
+                'about.label': 'Our Story',
+                'about.title': 'Where Nature<br>Meets Culinary Art',
+                'about.text1': 'Nestled on the shores of Greece\'s largest lake, Aqua Terra offers an unparalleled dining experience that celebrates the harmony between exceptional cuisine and breathtaking natural beauty.',
+                'about.text2': 'Our award-winning kitchen masterfully blends traditional Greek recipes with modern techniques, creating dishes that tell stories of heritage, passion, and uncompromising quality.',
+                'stat.award': 'Αετοί Award',
+                'stat.guests': 'Happy Guests',
+                'stat.years': 'Years Excellence',
+                'exp.label': 'What We Offer',
+                'exp.title': 'An Unforgettable<br>Experience',
+                'exp.dining': 'Fine Dining',
+                'exp.diningDesc': 'Exquisite Mediterranean cuisine crafted with locally sourced ingredients and presented with artistic precision.',
+                'exp.cocktail': 'Cocktail Bar',
+                'exp.cocktailDesc': 'Signature cocktails and premium spirits, mixed to perfection by our expert bartenders in an elegant setting.',
+                'exp.cafe': 'Café Lounge',
+                'exp.cafeDesc': 'Relaxing café atmosphere perfect for morning coffee, afternoon treats, or evening conversations with friends.',
+                'exp.terrace': 'Lake View Terrace',
+                'exp.terraceDesc': 'Panoramic terrace overlooking Lake Trichonida, offering stunning sunset views and unforgettable moments.',
+                'menu.label': 'Culinary Excellence',
+                'menu.title': 'Signature Dishes',
+                'cta.title': 'Reserve Your Table',
+                'cta.desc': 'Join us for an unforgettable dining experience at Lake Trichonida.',
+                'cta.call': 'Call',
+                'cta.email': 'Email Us',
+                'cta.book': 'Book Online',
+                'loc.label': 'Find Us',
+                'loc.title': 'Visit Aqua Terra',
+                'loc.address': 'Address',
+                'loc.hours': 'Opening Hours',
+                'loc.getting': 'Getting Here',
+                'footer.explore': 'Explore',
+                'footer.contact': 'Contact',
+                'footer.follow': 'Follow',
+                'footer.privacy': 'Privacy',
+                'footer.terms': 'Terms',
+                'footer.imprint': 'Imprint'
+            }
+        };
+
+        let currentLang = 'el';
+
+        // Language Switcher
+        function switchLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.documentElement.lang = lang;
+            localStorage.setItem('aquaterra_lang', lang);
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+        }
+
+        // Initialize language
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('aquaterra_lang') || 'el';
+            switchLanguage(savedLang);
+
+            // Language button listeners
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    switchLanguage(btn.dataset.lang);
+                });
+            });
+
+            // Mobile menu toggle
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            mobileToggle.addEventListener('click', () => {
+                mobileToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            // Close mobile menu on link click
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        });
+
+        // Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.loader').classList.add('hidden');
+            }, 2500);
+        });
+
+        // Scroll Reveal
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', reveal);
+        reveal(); // Initial check
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        console.log('✨ Aqua Terra - Premium Landingpage loaded');
+    </script>
+</body>
+</html>
