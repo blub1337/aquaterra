@@ -158,7 +158,7 @@
         @media (pointer: fine){.spotlight{opacity:1}}
 
         /* Navigation */
-        nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,var(--bg),transparent);transition:all .4s ease}
+        nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;background:transparent;transition:all .4s ease}
         nav.scrolled{background:var(--glass);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:.75rem 5%}
         .logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;color:var(--gold);letter-spacing:.18em;position:relative}
         .logo::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .4s ease}
@@ -180,7 +180,7 @@
 
         /* Hero */
         .hero-wrapper{position:relative;height:520vh;z-index:1}
-        .hero-sticky{position:sticky;top:0;height:100dvh;min-height:100dvh;width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:0 5%;background:var(--bg)}
+        .hero-sticky{position:sticky;top:0;height:100dvh;min-height:100dvh;width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:0 5%;background:var(--bg);z-index:1}
         #heroCanvas{position:absolute;top:0;left:0;width:100%;height:100%;filter:saturate(1.05);background:var(--bg);will-change:transform}
         .hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 0%,rgba(3,3,3,.55) 70%,var(--bg) 100%),linear-gradient(180deg,rgba(3,3,3,.2) 0%,rgba(3,3,3,.45) 60%,var(--bg) 100%);pointer-events:none}
         .hero-noise{position:absolute;inset:0;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -202,7 +202,7 @@
         .hero-progress{position:absolute;bottom:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--gold),var(--gold-2));z-index:3}
 
         /* Main */
-        main{position:relative;z-index:2;background:var(--bg)}
+        main{position:relative;z-index:10;background:var(--bg)}
         section{padding:clamp(4rem,10vw,8rem) 5%;position:relative}
         .section-header{text-align:center;margin-bottom:clamp(3rem,6vw,5rem)}
         .section-label{display:inline-block;font-size:.65rem;text-transform:uppercase;letter-spacing:.35em;color:var(--gold-dim);margin-bottom:1.25rem;padding:.4rem .9rem;border:1px solid var(--border);border-radius:100px;background:rgba(212,175,55,.05)}
