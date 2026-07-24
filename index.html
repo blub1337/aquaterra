@@ -146,7 +146,7 @@
         ::selection{background:rgba(212,175,55,0.25);color:#fff}
 
         /* Loader */
-        .loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;transition:opacity .7s ease,visibility .7s ease}
+        .loader{position:fixed;inset:0;z-index:9999;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;transition:opacity .5s ease,visibility .5s ease}
         .loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
         .loader-text{font-size:.7rem;text-transform:uppercase;letter-spacing:.4em;color:var(--gold);animation:pulse 2s ease-in-out infinite}
         .loader-bar{width:220px;height:2px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;position:relative}
@@ -154,8 +154,8 @@
         @keyframes pulse{0%,100%{opacity:.6}50%{opacity:1}}
 
         /* Spotlight cursor glow */
-        .spotlight{position:fixed;pointer-events:none;inset:0;z-index:1001;opacity:0;background:radial-gradient(600px circle at var(--x,50%) var(--y,50%),rgba(212,175,55,.08),transparent 40%);transition:opacity .3s ease}
-        @media (pointer: fine){.spotlight{opacity:1}}
+        .spotlight{position:fixed;pointer-events:none;inset:0;z-index:1001;opacity:0;background:radial-gradient(600px circle at var(--x,50%) var(--y,50%),rgba(212,175,55,.08),transparent 40%);transition:opacity .3s ease;display:none}
+        @media (pointer: fine){.spotlight{display:block;opacity:1}}
 
         /* Navigation */
         nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;background:transparent;transition:all .4s ease}
@@ -184,7 +184,7 @@
         #heroCanvas{position:absolute;top:0;left:0;width:100%;height:100%;filter:saturate(1.05);background:var(--bg);will-change:transform}
         .hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 0%,rgba(3,3,3,.55) 70%,var(--bg) 100%),linear-gradient(180deg,rgba(3,3,3,.2) 0%,rgba(3,3,3,.45) 60%,var(--bg) 100%);pointer-events:none}
         .hero-noise{position:absolute;inset:0;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-        .hero-content{position:relative;z-index:2;text-align:center;max-width:940px;padding:0 6%;pointer-events:none;transition:opacity .6s ease,transform .6s ease}
+        .hero-content{position:relative;z-index:2;text-align:center;max-width:940px;padding:8vh 6% 0;pointer-events:none;transition:opacity .6s ease,transform .6s ease}
         .hero-label{display:inline-flex;align-items:center;gap:.6rem;font-size:.65rem;text-transform:uppercase;letter-spacing:.35em;color:var(--gold);margin-bottom:1.5rem;padding:.55rem 1.1rem;border:1px solid var(--border);border-radius:100px;background:rgba(212,175,55,.06);backdrop-filter:blur(8px);animation:float 6s ease-in-out infinite}
         .hero-label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
         @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
@@ -801,11 +801,12 @@
                 frames[0]=firstFrame;
                 renderFrame(0);
                 updateHero();
+                loader.classList.add('hidden');
             };
-            firstFrame.onerror=()=>{console.warn('First frame load failed');};
+            firstFrame.onerror=()=>{console.warn('First frame load failed');loader.classList.add('hidden');};
             firstFrame.src=frameUrls[0];
 
-            loadFrames().then(()=>{resizeCanvas();updateHero();setTimeout(()=>loader.classList.add('hidden'),500);});
+            loadFrames().then(()=>{resizeCanvas();updateHero();});
         })();
 
         // ===== SPOTLIGHT =====
